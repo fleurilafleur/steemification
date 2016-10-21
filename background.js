@@ -23,9 +23,10 @@ function show() {
 function showUpvote() {
 	var notification = new Notification("+1 Upvote", {
 		icon: 'extension_upvote.png',
+		requireInteraction: true,
 		body: "" + localStorage.lastUser + " voted on " + getTopicSubstring(localStorage.lastTopic)
 	});
-	setTimeout(notification.close.bind(notification), 5000);
+    setTimeout(notification.close.bind(notification), 10000);
 	
 	notification.onclick = function () {
 		window.focus();
@@ -37,9 +38,10 @@ function showUpvote() {
 function showDownvote() {
 	var notification = new Notification("-1 Downvote", {
 		icon: 'extension_upvote.png',
+		requireInteraction: true,
 		body: "" + localStorage.lastUser + " voted on " + getTopicSubstring(localStorage.lastTopic)
 	});
-	setTimeout(notification.close.bind(notification), 5000);
+	setTimeout(notification.close.bind(notification), 10000);
 	
 	notification.onclick = function () {
 		window.focus();
@@ -51,9 +53,10 @@ function showDownvote() {
 function showComment() {
 	var notification = new Notification("+1 Comment", {
 		icon: 'extension_message.png',
+		requireInteraction: true,
 		body: "" + localStorage.lastUser + " replied to " + getTopicSubstring(localStorage.lastTopic)
 	});
-	setTimeout(notification.close.bind(notification), 5000);
+	setTimeout(notification.close.bind(notification), 10000);
 	
 	notification.onclick = function () {
 		window.focus();
