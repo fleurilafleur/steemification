@@ -37,7 +37,7 @@ function showUpvote() {
 
 function showDownvote() {
 	var notification = new Notification("-1 Downvote", {
-		icon: 'extension_upvote.png',
+		icon: 'extension_downvote.png',
 		requireInteraction: true,
 		body: "" + localStorage.lastUser + " voted on " + getTopicSubstring(localStorage.lastTopic)
 	});
