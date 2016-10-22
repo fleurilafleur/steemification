@@ -20,47 +20,47 @@ function show() {
 	
 }
 
-function showUpvote() {
+function showUpvote(user, topic, link) {
 	var notification = new Notification("+1 Голос За", {
 		icon: 'extension_upvote.png',
 		requireInteraction: true,
-		body: "" + localStorage.lastUser + " проголосовал за " + getTopicSubstring(localStorage.lastTopic)
+		body: "" + user + " проголосовал за " + getTopicSubstring(topic)
 	});
     setTimeout(notification.close.bind(notification), 10000);
 	
 	notification.onclick = function () {
 		window.focus();
-		chrome.tabs.create({ url: localStorage.lastLink });
+		chrome.tabs.create({ url: link });
 		notification.close();
 	};
 }
 
-function showDownvote() {
+function showDownvote(user, topic, link) {
 	var notification = new Notification("-1 Голос Против", {
 		icon: 'extension_downvote.png',
 		requireInteraction: true,
-		body: "" + localStorage.lastUser + " проголосовал против " + getTopicSubstring(localStorage.lastTopic)
+		body: "" + user + " проголосовал против " + getTopicSubstring(topic)
 	});
 	setTimeout(notification.close.bind(notification), 10000);
 	
 	notification.onclick = function () {
 		window.focus();
-		chrome.tabs.create({ url: localStorage.lastLink });
+		chrome.tabs.create({ url: link });
 		notification.close();
 	};
 }
 
-function showComment() {
+function showComment(user, topic, link) {
 	var notification = new Notification("+1 Комментарий", {
 		icon: 'extension_message.png',
 		requireInteraction: true,
-		body: "" + localStorage.lastUser + " ответил на " + getTopicSubstring(localStorage.lastTopic)
+		body: "" + user + " ответил на " + getTopicSubstring(topic)
 	});
 	setTimeout(notification.close.bind(notification), 10000);
 	
 	notification.onclick = function () {
 		window.focus();
-		chrome.tabs.create({ url: localStorage.lastLink });
+		chrome.tabs.create({ url: link });
 		notification.close();
 	};
 }
@@ -130,93 +130,75 @@ if (window.Notification) {
 					}
 					else
 					{
-						var historyCounter = response.length-1;
-						while (! (response[historyCounter][1].op[0] == "vote" || response[historyCounter][1].op[0] == "comment"))
-						{
-							historyCounter--;
-							if (historyCounter > response.length)
-							{
-								console.log("No vote or post in the last 10 network entries found!");
-								return;
-							}
-						}
-						
-						var historyObject = response[historyCounter][1];
-						
-						
-						if (historyObject.timestamp == localStorage.lastTime)
-						{
-							console.log("Last post already updated (Time: " + historyObject.timestamp + "). Skipping");
+						if (response.length == 0) {
+							console.log("No any actions for this user!");
 							return;
 						}
-						
-						localStorage.lastTime = historyObject.timestamp;
-						var historyObjectOp = historyObject.op;
-						
-						var actionType = historyObjectOp[0];
-						var actionObject = historyObjectOp[1];
-						
-						var actionUser = "";
-						var actionTopic = "";
-						var actionTopicUser = "";
-						
-						
-						
-						if (actionType == "vote")
-						{
-							console.log("Recieved vote object: ", actionObject);
-							
-							actionUser = actionObject.voter;
-							actionTopic = actionObject.permlink;
-							actionTopicUser = actionObject.author;
-							
-							localStorage.lastTopic = actionTopic;
-							localStorage.lastUser = actionUser;
-							localStorage.lastLink = "https://golos.io/golos/@" + actionTopicUser + "/" + actionTopic;
-							
-							if (actionUser == localStorage.username)
-							{
-								console.log("User voted on own post. Skipping notification...");
+
+						var previousLastTime = localStorage.lastTime;
+						localStorage.lastTime = response[response.length-1][1].timestamp;
+
+						for (var historyCounter = response.length-1; historyCounter >= 0; historyCounter--) {
+
+							var historyObject = response[historyCounter][1];
+
+							if (historyObject.timestamp == previousLastTime) {
+								console.log("Last post already updated (Time: " + historyObject.timestamp + "). Skipping");
 								return;
 							}
-							
-							if (actionObject.weight > 0)
-							{
-								if (JSON.parse(localStorage.notifyUpvotes))
-								{
-									showUpvote();
+
+							var historyObjectOp = historyObject.op;
+
+							var actionType = historyObjectOp[0];
+							var actionObject = historyObjectOp[1];
+
+							var actionUser = "";
+							var actionTopic = "";
+							var actionTopicUser = "";
+							var actionLink = "";
+
+
+							if (actionType == "vote") {
+								console.log("Received vote object: ", actionObject);
+
+								actionUser = actionObject.voter;
+								actionTopic = actionObject.permlink;
+								actionTopicUser = actionObject.author;
+								actionLink = "https://golos.io/golos/@" + actionTopicUser + "/" + actionTopic;
+
+								if (actionUser == localStorage.username) {
+									console.log("User voted on own post. Skipping notification...");
+									return;
+								}
+
+								if (actionObject.weight > 0) {
+									if (JSON.parse(localStorage.notifyUpvotes)) {
+										showUpvote(actionUser, actionTopic, actionLink);
+									}
+								}
+
+								if (actionObject.weight < 0) {
+									if (JSON.parse(localStorage.notifyDownvotes)) {
+										showDownvote(actionUser, actionTopic, actionLink);
+									}
 								}
 							}
-								
-							if (actionObject.weight < 0)
-							{
-								if (JSON.parse(localStorage.notifyDownvotes))
-								{
-									showDownvote();
+							if (actionType == "comment") {
+								console.log("Received comment object: ", actionObject);
+
+								actionUser = actionObject.author;
+								actionTopic = actionObject.permlink;
+								actionTopicUser = actionObject.author;
+								actionLink = "https://golos.io/golos/@" + actionTopicUser + "/" + actionTopic;
+
+								if (actionUser == localStorage.username) {
+									console.log("User voted on own post. Skipping notification...");
+									return;
 								}
-							}
-						}
-						if (actionType == "comment")
-						{
-							console.log("Recieved comment object: ", actionObject);
-							
-							actionUser = actionObject.author;
-							actionTopic = actionObject.permlink;
-							actionTopicUser = actionObject.author;
-							
-							localStorage.lastTopic = actionTopic;
-							localStorage.lastUser = actionUser;
-							localStorage.lastLink = "https://golos.io/golos/@" + actionTopicUser + "/" + actionTopic;
-							
-							if (actionUser == localStorage.username)
-							{
-								console.log("User voted on own post. Skipping notification...");
-								return;
-							}
-							
-							if (JSON.parse(localStorage.notifyComments))
-							{
-								showComment();
+
+								if (JSON.parse(localStorage.notifyComments)) {
+									showComment(actionUser, actionTopic, actionLink);
+								}
 							}
 						}
 					}
