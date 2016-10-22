@@ -21,10 +21,10 @@ function show() {
 }
 
 function showUpvote() {
-	var notification = new Notification("+1 Upvote", {
+	var notification = new Notification("+1 Голос За", {
 		icon: 'extension_upvote.png',
 		requireInteraction: true,
-		body: "" + localStorage.lastUser + " voted on " + getTopicSubstring(localStorage.lastTopic)
+		body: "" + localStorage.lastUser + " проголосовал за " + getTopicSubstring(localStorage.lastTopic)
 	});
     setTimeout(notification.close.bind(notification), 10000);
 	
@@ -36,10 +36,10 @@ function showUpvote() {
 }
 
 function showDownvote() {
-	var notification = new Notification("-1 Downvote", {
+	var notification = new Notification("-1 Голос Против", {
 		icon: 'extension_downvote.png',
 		requireInteraction: true,
-		body: "" + localStorage.lastUser + " voted on " + getTopicSubstring(localStorage.lastTopic)
+		body: "" + localStorage.lastUser + " проголосовал против " + getTopicSubstring(localStorage.lastTopic)
 	});
 	setTimeout(notification.close.bind(notification), 10000);
 	
@@ -51,10 +51,10 @@ function showDownvote() {
 }
 
 function showComment() {
-	var notification = new Notification("+1 Comment", {
+	var notification = new Notification("+1 Комментарий", {
 		icon: 'extension_message.png',
 		requireInteraction: true,
-		body: "" + localStorage.lastUser + " replied to " + getTopicSubstring(localStorage.lastTopic)
+		body: "" + localStorage.lastUser + " ответил на " + getTopicSubstring(localStorage.lastTopic)
 	});
 	setTimeout(notification.close.bind(notification), 10000);
 	
