@@ -168,7 +168,7 @@ if (window.Notification) {
 
 								if (actionUser == localStorage.username) {
 									console.log("User voted on own post. Skipping notification...");
-									return;
+									continue;
 								}
 
 								if (actionObject.weight > 0) {
@@ -193,7 +193,7 @@ if (window.Notification) {
 
 								if (actionUser == localStorage.username) {
 									console.log("User voted on own post. Skipping notification...");
-									return;
+									continue;
 								}
 
 								if (JSON.parse(localStorage.notifyComments)) {
