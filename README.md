@@ -6,7 +6,7 @@ GolosNotify - Оповещения для golos.io
 
 ## С чего начать:
 
-* добавьте расшиение -> https://chrome.google.com/webstore/detail/blnmejicejbkcdebiobgfpjhopoahmen
+* добавьте расшиение -> https://chrome.google.com/webstore/detail/abfmjjkkpeokoijnlnhmjobjhjkmaijg
 * нажмите на иконку Голоса на палени инструментов браузера
 * введите имя пользователя вашего аккауна Голос
 * установите частоту обновления
