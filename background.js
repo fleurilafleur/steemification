@@ -78,7 +78,7 @@ function getTopicSubstring(topic)
 // Conditionally initialize the options.
 if (!localStorage.isInitialized) {
 	localStorage.isActivated = true;   // The display activation.
-	localStorage.frequency = 30;        // The display frequency, in seconds.
+	localStorage.frequency = 10;        // The display frequency, in seconds.
 	localStorage.isInitialized = true; // The option initialization.
 	
 	localStorage.firstRequestSend = false;
