@@ -1,7 +1,7 @@
 {
   "name": "GolosNotify - Уведомления для golos.io",
   "short_name": "GolosNotify",
-  "version": "1.6",
+  "version": "1.7",
   "description":
     "Показ уведомлений при появления новых голосов и комментариев на Golos.io",
   "icons": {"16": "16.png", "48": "48.png", "128": "128.png"},
