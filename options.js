@@ -68,7 +68,7 @@ window.addEventListener('load', function() {
 	
 	localStorage.settingsChanged = true;
 	
-	document.getElementById("nameChanged").style.visibility = "visible";
+	document.getElementById("nameChanged").style.display = "inline";
 	
 	console.log("Username changed: " , localStorage.username);
   };

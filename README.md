@@ -1,25 +1,27 @@
-# steemification
-Steemification - Notifications for Steemit.com
+# GolosNotify
 
-Display desktop notifications once new votes and comments on Steemit.com are available
-Steemification offers the long missing notifications from the social media platform steemit.com. The development is ongoing and the extension will be improved over time.
+GolosNotify - Оповещения для golos.io
 
-## Getting started:
-* install the extension -> https://chrome.google.com/webstore/detail/blnmejicejbkcdebiobgfpjhopoahmen
-* click on the steemit icon in your browser bar
-* enter your account data
-* let the notifications roll in
+Установите расширение GolosNotify для браузера Google Chrome, и получайте уведомления о  действиях с Вашими постами и комментариями.GolosNotify позволяет Вам получаьть оповещения о различных действиях с Вашими постами (апвоут/комментирование) до того как данный функционал будет доступен в самом клиенте golos.io. Расширение будет дорабатываться, и возможно какие то решения из него будут использоваться в клиенте golos.io
 
-Any feedback for the notification may be posted via: https://steemit.com/@fleuri on the related blog post.
+## С чего начать:
 
-## Manually getting started:
+* добавьте расшиение -> https://chrome.google.com/webstore/detail/abfmjjkkpeokoijnlnhmjobjhjkmaijg
+* нажмите на иконку Голоса на палени инструментов браузера
+* введите имя пользователя вашего аккауна Голос
+* установите частоту обновления
+* наслаждайтесь увеломлениями, вы больше никогда не пропустите, если @on0tole откомментит один из ваших постов
 
-* Download the files in the repository
-* inside of Chrome go to chrome://extensions
-* enable developer mode
-* "load unpacked extension" 
-* have fun 
+>Просьба писать Ваши предложения и любой фидбэк на https://golos.io/@on0tole в статью с анонсом.
 
-## Be cautious
+## Ручная установка:
 
-You should never install anything that you don't trust. This extension will be free forever and it will never ask for private keys or your password. The extension that is uploaded to the store is using the exact codebase as this extension here in the repository. I will only update it in the store once this code here is updated, live and audited.
+* загрузите файл по ссылке
+* зайдите в меню расширений браузера chrome://extensions/ 
+* включите режим разработчика 
+* загрузите распакованный файл с расширением 
+* наслаждайтесь
+
+## Важно
+
+Не стоит устанавливать то, чему вы не доверяете. Данное расширение останется бесплатным навсегда, оно никогда не будет запрашивать ваш пароль или закрытые ключи. Расширение которые вы загрузили на 100 процентов соответствует исходникам, которые размещены тут. Расширение в магазине будет обновлятся только после обновления исходников, проверки и аудита кода.

@@ -1,9 +1,9 @@
 {
-  "name": "Steemification - Notifications for Steemit",
-  "short_name": "Steemification",
-  "version": "1.4",
+  "name": "GolosNotify - Уведомления для golos.io",
+  "short_name": "GolosNotify",
+  "version": "1.8",
   "description":
-    "Display desktop notifications once new votes and comments on Steemit.com are available",
+    "Показ уведомлений при появления новых голосов и комментариев на Golos.io",
   "icons": {"16": "16.png", "48": "48.png", "128": "128.png"},
   "permissions": [
     "notifications"
@@ -23,5 +23,3 @@
 	"default_popup": "options.html"
   }
 }
-
-

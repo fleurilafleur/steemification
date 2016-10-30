@@ -1,21 +1,22 @@
 <!doctype html>
 <html>
   <head>
-    <title>Steemification</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>GolosNotify</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="options.js"></script>
   </head>
   <body style="min-width:400px;">
     <h1>
       <img src="48.png" alt="Toast">
-      Steemification
+      GolosNotify
     </h1>
-    <h2>General Options</h2>
-	<b>Settings are saved automatically on change</b><br><br>
+    <h2>Общие настройки</h2>
+	<b>Настройки автоматически сохраняются при изменениях</b><br><br>
     <form id="options">
-		   Username: <input type="text" name="username"><div id="nameChanged" style="background-color:powderblue; display: none;">Username changed!</div><br><br>
+		   Имя пользователя: @<input type="text" name="username"><div id="nameChanged" style="background-color:powderblue; display: none;"><br>Имя пользователя изменено!</div></div><br><br>
       <input type="checkbox" name="isActivated" checked>
-      Check for updates every 
+      Проверять каждые
       <select name="frequency">
         <option>10</option>
         <option>20</option>
@@ -27,12 +28,12 @@
         <option>420</option>
         <option>600</option>
       </select>
-      seconds.
+      секунд.
 	  <br>
-	  <h2>Notification Options</h2>
-	  <input type="checkbox" name="notifyUpvotes" checked> Notify Upvotes  <br>
-	  <input type="checkbox" name="notifyDownvotes" checked>  Notify Downvotes <br>
-	  <input type="checkbox" name="notifyComments" checked>  Notify Comments <br>
+	  <h2>Настройки уведомлений</h2>
+	  <input type="checkbox" name="notifyUpvotes" checked> Уведомления о Голосах За <br>
+	  <input type="checkbox" name="notifyDownvotes" checked>  Уведомления о Голосах Против <br>
+	  <input type="checkbox" name="notifyComments" checked>  Уведомления о Комментариях <br>
     </form>
   </body>
 </html>

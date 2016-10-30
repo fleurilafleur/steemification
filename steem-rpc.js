@@ -9,7 +9,7 @@ var WsRpc = require("./WebSocketRpc");
 var SteemApi = require("./SteemApi");
 
 var defaultOptions = {
-    url: "wss://this.piston.rocks",
+    url: "wss://ws.golos.io",
     user: "",
     pass: "",
     debug: false,

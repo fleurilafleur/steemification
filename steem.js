@@ -6,7 +6,7 @@ var apiIds = {
 };
 
 var Steem = function(url){
-	this.url = url || 'wss://this.piston.rocks';
+	this.url = url || 'wss://ws.golos.io';
 };
 
 Steem.prototype.send = function(api, data, callback) {
